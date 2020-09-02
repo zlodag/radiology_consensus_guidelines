@@ -1,6 +1,7 @@
-const generate_json = require('./generate_json');
 const fs = require('fs');
 const handlebars = require('handlebars');
+const generate_json = require('./generate_json');
+const paths = require('./paths');
 
 handlebars.registerPartial({
 	introduction: fs.readFileSync('views/partials/introduction.handlebars', 'utf8'),
@@ -12,4 +13,5 @@ handlebars.registerPartial({
 
 const template = handlebars.compile(fs.readFileSync('views/main.handlebars', 'utf8'));
 const output = template({ data: generate_json.data });
-fs.writeFileSync('consensus.html', output);
+
+fs.writeFileSync(process.argv.length === 3 ? process.argv[2] : paths.PUBLISH_PATH, output);

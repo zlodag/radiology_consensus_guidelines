@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "generate": "node generate_html.js"
+    "generate": "node generate_html.js 'consensus.html'",
+    "publish": "node generate_html.js "
   },
   "author": "",
   "license": "ISC",
